@@ -38,12 +38,18 @@ public class SenderController {
       }
         }catch(FileNotFoundException e){
             e.printStackTrace();
-        }
-    }
-public void checkHeader(){
-    /*
-	Commit the FIRE :) !!!
-	*/
+	
     }    
+}
+private void checkHeader(){
+ actionListener = new ActionListener(){
+	 public void actioPerformed(ActionEvent evvent){
+		 SenderView view =  new SenderView();
+		 String checkValue = view.getHeaderValue();
+	 }
+	 
+ };
+ 
+   }
 }
 
