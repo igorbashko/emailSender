@@ -19,8 +19,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SenderController {
-
+    private Interface view = new Interface();
+    private sendMail model = new sendMail();
     private ActionListener actionListener;
+    
 
     public void StartApplication(){
         Interface run = new Interface();
@@ -41,14 +43,17 @@ public class SenderController {
 	
     }    
 }
-private void checkHeader(){
- actionListener = new ActionListener(){
-	 public void actioPerformed(ActionEvent evvent){
-		 SenderView view =  new SenderView();
-		 String checkValue = view.getHeaderValue();
-	 }
-	 
- };
+public void checkHeader(){
+ actionListener = new ActionListener() {
+	 public void actionPerformed(ActionEvent event){
+		if(model.checkHeaderEmpty(view.getHeaderValue())){
+                    view.setHint("Введите заголовок");
+                }else{
+                    view.setHint("Ok");
+                }
+         }
+};
+ view.ButtonClicked().addActionListener(actionListener);
  
    }
 }

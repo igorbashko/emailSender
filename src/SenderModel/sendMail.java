@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.Properties;
 import java.util.Scanner;
+import SenderView.*;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -30,7 +31,7 @@ public class sendMail {
 	 * This method is used for multiple attachments in one session
 	 */
 	private static BodyPart messagePart;
-	
+        	
 	private static BodyPart addAttachement(String file, String tag) throws MessagingException{
 		messagePart = new MimeBodyPart();
 		DataSource source = new FileDataSource(file);
@@ -121,5 +122,11 @@ public class sendMail {
 	     }
 	    		      
 	   }
+        public Boolean checkHeaderEmpty(String emailHeader ){
+           Boolean result = null;
+            if(emailHeader !=null && !emailHeader.isEmpty())
+                result = true;
+           return result;
+        }
 }
 
