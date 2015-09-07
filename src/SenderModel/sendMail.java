@@ -128,5 +128,13 @@ public class sendMail {
                 result = true;
            return result;
         }
-}
-
+        public void setHeader(String emailHeader){
+         //session will be declared during authentification part   
+        Message message = new MimeMessage(session); 
+        try{
+        message.setSubject(emailHeader);
+        }catch(MessagingException e){
+            e.printStackTrace();
+        }
+    }
+  }

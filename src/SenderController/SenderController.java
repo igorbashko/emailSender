@@ -46,10 +46,12 @@ public class SenderController {
 public void checkHeader(){
  actionListener = new ActionListener() {
 	 public void actionPerformed(ActionEvent event){
-		if(model.checkHeaderEmpty(view.getHeaderValue())){
+             String header = view.getHeaderValue();
+		if(model.checkHeaderEmpty(header)){
                     view.setHint("Введите заголовок");
                 }else{
-                    view.setHint("Ok");
+                    model.setHeader(header);
+                    
                 }
          }
 };
