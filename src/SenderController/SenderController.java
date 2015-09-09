@@ -51,8 +51,7 @@ public void checkHeader(){
                     view.setHint("Введите заголовок");
                 }else{
                     model.setHeader(header);
-                    
-                }
+             }
          }
 };
  view.ButtonClicked().addActionListener(actionListener);
