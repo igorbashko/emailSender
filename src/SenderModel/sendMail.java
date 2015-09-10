@@ -122,11 +122,30 @@ public class sendMail {
 	     }
 	    		      
 	   }
+       /*
+        *Subject string validation
+        */    
         public Boolean checkHeaderEmpty(String emailHeader ){
            Boolean result = null;
             if(emailHeader !=null && !emailHeader.isEmpty())
                 result = true;
            return result;
+        }
+        /*
+        Setting subject of the letter
+        */
+        /*
+        Setting authentification process
+        */
+        public void setAuthentificatio(String username, String password, String host, String mailServer){
+        Properties props = new Properties();
+        	
+        props.put(mailServer+".smtp.auth", "true");
+	props.put(mailServer+".smtps.starttls.enable", "true");
+	props.put(mailServer+".smtp.ssl.enable", "true");
+	props.put(mailServer+".smtp.host", );
+	props.put(mailServer+".smtp.port", "465");
+        
         }
         public void setHeader(String emailHeader){
          //session will be declared during authentification part   
