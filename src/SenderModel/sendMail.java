@@ -122,7 +122,13 @@ public class sendMail {
 	     }
 	    		      
 	   }
-       /*
+       
+        private Session session;
+        private String username;
+        private String password;
+        private Properties props;
+        
+        /*
         *Subject string validation
         */    
         public Boolean checkHeaderEmpty(String emailHeader ){
@@ -131,22 +137,39 @@ public class sendMail {
                 result = true;
            return result;
         }
+        
         /*
         Setting subject of the letter
         */
+        
         /*
         Setting authentification process
         */
         public void setAuthentificatio(String username, String password, String host, String mailServer, String port){
-        //Not finished yet 
-        //Add username and password fields
-        Properties props = new Properties();
+        this.username = username;
+        this.password = password;
+        this.props = new Properties();
         props.put(mailServer+".smtp.auth", "true");
 	props.put(mailServer+".smtps.starttls.enable", "true");
 	props.put(mailServer+".smtp.ssl.enable", "true");
 	props.put(mailServer+".smtp.host",host);
 	props.put(mailServer+".smtp.port", port);
         }
+        
+              
+        public void setSession(){
+            String username = this.username;
+            String password =this.password;
+            
+            this.session.getInstance(this.props, new javax.mail.Authenticator() {
+                
+                  protected PasswordAuthentication getPaswordAuthentification(){
+                      
+                      return new PasswordAuthentication(username,password);
+                  }
+            });
+        }
+        
         public void setHeader(String emailHeader){
          //session will be declared during authentification part   
         Message message = new MimeMessage(session); 
