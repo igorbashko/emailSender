@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 public class SenderController {
     private Interface view = new Interface();
     private sendMail model = new sendMail();
+    private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
     
 
@@ -57,5 +58,15 @@ public void checkHeader(){
  view.ButtonClicked().addActionListener(actionListener);
  
    }
+
+public void setSettings(){
+    actionListener = new ActionListener(){
+        public void actionPerformed(ActionEvent event){
+           settings.readSettings();
+           model.setAuthentificatio(settings.getSettings(0), settings.getSettings(1), settings.getSettings(3), "mail.ru", settings.getSettings(4) );
+          }
+    };
+   settings.ButtonClicked().addActionListener(actionListener);
+ }
 }
 

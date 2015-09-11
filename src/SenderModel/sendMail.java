@@ -137,15 +137,15 @@ public class sendMail {
         /*
         Setting authentification process
         */
-        public void setAuthentificatio(String username, String password, String host, String mailServer){
+        public void setAuthentificatio(String username, String password, String host, String mailServer, String port){
+        //Not finished yet 
+        //Add username and password fields
         Properties props = new Properties();
-        	
         props.put(mailServer+".smtp.auth", "true");
 	props.put(mailServer+".smtps.starttls.enable", "true");
 	props.put(mailServer+".smtp.ssl.enable", "true");
-	props.put(mailServer+".smtp.host", );
-	props.put(mailServer+".smtp.port", "465");
-        
+	props.put(mailServer+".smtp.host",host);
+	props.put(mailServer+".smtp.port", port);
         }
         public void setHeader(String emailHeader){
          //session will be declared during authentification part   

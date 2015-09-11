@@ -11,7 +11,7 @@ package SenderView;
  * @author igor
  */
 public class SettingsWindow extends javax.swing.JFrame {
-
+private String[] Settings = new String[4]; 
     /**
      * Creates new form SettingsWindow
      */
@@ -140,9 +140,23 @@ public class SettingsWindow extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+      
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public javax.swing.JButton ButtonClicked(){
+    return jButton1;
+}
+    public void readSettings(){
+       this.Settings[0]=jTextField1.getText(); //Login
+       this.Settings[1]=jTextField2.getText(); //Password
+       this.Settings[2]=jComboBox1.getSelectedItem().toString(); //mail server
+       this.Settings[3]=jTextField3.getText(); //host
+       this.Settings[4]=jTextField4.getText(); //port
+    }
+    
+    public String getSettings(int n){
+        return this.Settings[n];
+    }
     /**
      * @param args the command line arguments
      */
