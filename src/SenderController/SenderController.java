@@ -46,7 +46,7 @@ public class SenderController {
     }    
 }
 public void checkHeader(){
-    Interface view = new Interface();
+    final Interface view = new Interface();
  actionListener = new ActionListener() {
       public void actionPerformed(ActionEvent event){
              String header = view.getHeaderValue();
@@ -61,11 +61,15 @@ public void checkHeader(){
  
    }
 
-public void setSettings(){
-    SettingsWindow settings = new SettingsWindow();
-    //actionListener = new ActionListener(){
-        //public void actionPerformed(ActionEvent event){
-           model.setAuthentificatio(settings.getSettings(0), settings.getSettings(1), settings.getSettings(3), "mail.ru", settings.getSettings(4) );
+public void setSettings(String username, String password, String mailServer, String host, 
+        String port){
+    //SettingsWindow settings;
+    //String settings[] = new String[5];
+    //settings.readSettings();
+    //String check = settings.getSettings(0);
+        model.setAuthentificatio(username, 
+                password, host, 
+                "mail.ru", port );
   };
    
  

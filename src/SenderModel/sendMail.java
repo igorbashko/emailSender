@@ -158,8 +158,8 @@ public class sendMail {
         
               
         public void setSession(){
-            String username = this.username;
-            String password =this.password;
+            final String username = this.username;
+            final String password =this.password;
             
             this.session.getInstance(this.props, new javax.mail.Authenticator() {
                 

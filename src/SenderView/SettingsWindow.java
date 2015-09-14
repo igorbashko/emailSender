@@ -145,7 +145,7 @@ private SenderController controller = new SenderController();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void readSettings(){
+public void readSettings(){
        this.Settings[0]=jTextField1.getText(); //Login
        this.Settings[1]=jTextField2.getText(); //Password
        this.Settings[2]=jComboBox1.getSelectedItem().toString(); //mail server
@@ -158,8 +158,10 @@ private void readSettings(){
         return this.Settings[n];
     }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     readSettings();
-     controller.setSettings();
+     //readSettings();
+     controller.setSettings(this.jLabel1.getText(), this.jTextField2.getText(),
+             this.jComboBox1.getSelectedItem().toString(), this.jTextField3.getText(),
+             this.jTextField4.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
