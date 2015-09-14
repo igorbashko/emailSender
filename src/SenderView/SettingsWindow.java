@@ -5,13 +5,15 @@
  */
 
 package SenderView;
+import SenderController.*;
 
 /**
  *
  * @author igor
  */
 public class SettingsWindow extends javax.swing.JFrame {
-private String[] Settings = new String[4]; 
+private String[] Settings = new String[5];
+private SenderController controller = new SenderController();
     /**
      * Creates new form SettingsWindow
      */
@@ -63,6 +65,11 @@ private String[] Settings = new String[4];
         });
 
         jButton2.setText("Отмена");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,26 +145,31 @@ private String[] Settings = new String[4];
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    public javax.swing.JButton ButtonClicked(){
-    return jButton1;
-}
-    public void readSettings(){
+private void readSettings(){
        this.Settings[0]=jTextField1.getText(); //Login
        this.Settings[1]=jTextField2.getText(); //Password
        this.Settings[2]=jComboBox1.getSelectedItem().toString(); //mail server
        this.Settings[3]=jTextField3.getText(); //host
        this.Settings[4]=jTextField4.getText(); //port
+      // this.jButton2.addAncestorListener(null);
     }
     
     public String getSettings(int n){
         return this.Settings[n];
     }
-    /**
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+     readSettings();
+     controller.setSettings();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+       controller.close();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public javax.swing.JButton ButtonClicked(){
+    return jButton1;
+}
+        /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {

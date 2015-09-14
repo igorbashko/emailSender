@@ -19,15 +19,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class SenderController {
-    private Interface view = new Interface();
+    //public Interface view = new Interface();
     private sendMail model = new sendMail();
-    private SettingsWindow settings = new SettingsWindow();
+    //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
     
 
     public void StartApplication(){
         Interface run = new Interface();
         run.setVisible(true);
+        //view.setVisible(true);
     }
   /*
     Reading user from a given list
@@ -45,8 +46,9 @@ public class SenderController {
     }    
 }
 public void checkHeader(){
+    Interface view = new Interface();
  actionListener = new ActionListener() {
-	 public void actionPerformed(ActionEvent event){
+      public void actionPerformed(ActionEvent event){
              String header = view.getHeaderValue();
 		if(model.checkHeaderEmpty(header)){
                     view.setHint("Введите заголовок");
@@ -60,13 +62,15 @@ public void checkHeader(){
    }
 
 public void setSettings(){
-    actionListener = new ActionListener(){
-        public void actionPerformed(ActionEvent event){
-           settings.readSettings();
+    SettingsWindow settings = new SettingsWindow();
+    //actionListener = new ActionListener(){
+        //public void actionPerformed(ActionEvent event){
            model.setAuthentificatio(settings.getSettings(0), settings.getSettings(1), settings.getSettings(3), "mail.ru", settings.getSettings(4) );
-          }
-    };
-   settings.ButtonClicked().addActionListener(actionListener);
- }
+  };
+   
+ 
+public void close(){
+    System.exit(0);
+}
 }
 
