@@ -61,7 +61,7 @@ public void checkHeader(){
  
    }
 
-public void setSettings(String username, String password, String mailServer, String host, 
+public void setSettings(String from, String username, String password, String mailServer, String host, 
         String port){
     //SettingsWindow settings;
     //String settings[] = new String[5];
