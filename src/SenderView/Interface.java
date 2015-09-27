@@ -90,6 +90,11 @@ public class Interface extends javax.swing.JFrame {
                 jButton2MouseClicked(evt);
             }
         });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Отмена");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +223,10 @@ public class Interface extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          controller.close();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
+    }//GEN-LAST:event_jButton2ActionPerformed
     public javax.swing.JButton ButtonClicked(){
       return jButton2;    
     }   

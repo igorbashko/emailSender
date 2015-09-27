@@ -6,6 +6,8 @@ import java.lang.reflect.Array;
 import java.util.Properties;
 import java.util.Scanner;
 import SenderView.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -170,13 +172,56 @@ public class sendMail {
             });
         }
         
-        public void setHeader(String emailHeader){
-         //session will be declared during authentification part   
-        Message message = new MimeMessage(session); 
+        public void sendMessage(String emailHeader, String content, String to){
+         //session is declared during authentification part   
+        Message message = new MimeMessage(session);
+        try{
+        message.setFrom(new InternetAddress("Igor Test<igor.littig@mail.ru>"));
+        }   catch (MessagingException ex) {
+               System.out.print("Something wrong with adress");
+               ex.printStackTrace();
+            }
         try{
         message.setSubject(emailHeader);
         }catch(MessagingException e){
             e.printStackTrace();
         }
-    }
+        BodyPart messagepart = new MimeBodyPart();
+            try {
+                messagepart.setContent(content, "text/html UTF-8");
+            } catch (MessagingException ex) {
+                System.out.println("Something wrong with content");
+                ex.printStackTrace();
+            }
+            Multipart multipart = new MimeMultipart("mixed");
+            try {
+                multipart.addBodyPart(messagepart);
+            } catch (MessagingException ex) {
+                //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Wrong with bodypart adding");
+                ex.printStackTrace();
+            }
+            try {
+                message.setContent(multipart);
+            } catch (MessagingException ex) {
+                //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Wrong with setting multipart content");
+            ex.printStackTrace();
+            }
+            try {
+                message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            } catch (MessagingException ex) {
+                //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Wrong with recepient");
+            ex.printStackTrace();
+          }
+            try {
+                Transport.send(message);
+            } catch (MessagingException ex) {
+                //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("wrong with recepient");
+            ex.printStackTrace();
+            }
+        }
+        
   }

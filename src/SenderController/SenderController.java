@@ -53,7 +53,8 @@ public void checkHeader(){
 		if(model.checkHeaderEmpty(header)){
                     view.setHint("Введите заголовок");
                 }else{
-                    model.setHeader(header);
+                  //  model.setHeader(header);
+                   System.out.println("Check this statement");
              }
          }
 };
@@ -71,6 +72,10 @@ public void setSettings(String from, String username, String password, String ma
                 password, host, 
                 "mail.ru", port );
   };
+
+public void send(String subject, String content, String recepient){
+    model.sendMessage(subject, content, recepient);
+}
    
  
 public void close(){
