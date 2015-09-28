@@ -11,7 +11,7 @@ import SenderController.*;
  * @author igor
  */
 public class Interface extends javax.swing.JFrame {
- private SenderController controller = new SenderController();
+ public SenderController controller = new SenderController();
     /**
      * Creates new form Interface
      */

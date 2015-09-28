@@ -13,7 +13,7 @@ import SenderController.*;
  */
 public class SettingsWindow extends javax.swing.JFrame {
 private String[] Settings = new String[5];
-private SenderController controller = new SenderController();
+private SenderController controller;
     /**
      * Creates new form SettingsWindow
      */
@@ -30,50 +30,50 @@ private SenderController controller = new SenderController();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        login = new javax.swing.JLabel();
+        password = new javax.swing.JLabel();
+        loginField = new javax.swing.JTextField();
+        passwordField = new javax.swing.JTextField();
+        serviceComboBox = new javax.swing.JComboBox();
+        postService = new javax.swing.JLabel();
+        smtpName = new javax.swing.JLabel();
+        smtpField = new javax.swing.JTextField();
+        port = new javax.swing.JLabel();
+        portField = new javax.swing.JTextField();
+        saveSettings = new javax.swing.JButton();
+        cancelSettings = new javax.swing.JButton();
+        senderField = new javax.swing.JTextField();
+        sender = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Логин");
+        login.setText("Логин");
 
-        jLabel2.setText("Пароль");
+        password.setText("Пароль");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "mail.ru", "gmail.com", "hotmail.com", "другое" }));
+        serviceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "mail.ru", "gmail.com", "hotmail.com", "другое" }));
 
-        jLabel3.setText("Почтовый сервис");
+        postService.setText("Почтовый сервис");
 
-        jLabel4.setText("имя smtp сервера");
+        smtpName.setText("имя smtp сервера");
 
-        jLabel5.setText("Port");
+        port.setText("Port");
 
-        jButton1.setText("Сохранить");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        saveSettings.setText("Сохранить");
+        saveSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                saveSettingsActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Отмена");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelSettings.setText("Отмена");
+        cancelSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelSettingsActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Отправитель");
+        sender.setText("Отправитель");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,35 +82,35 @@ private SenderController controller = new SenderController();
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3)
+                    .addComponent(smtpField)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(postService)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(serviceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(login)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
+                        .addComponent(sender)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(senderField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(password)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
+                        .addComponent(smtpName)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
+                                .addComponent(port)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(saveSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,66 +118,67 @@ private SenderController controller = new SenderController();
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(senderField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sender))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(login)
+                    .addComponent(loginField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(password)
+                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(serviceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(postService))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4)
+                .addComponent(smtpName)
                 .addGap(3, 3, 3)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(smtpField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(port))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(saveSettings)
+                    .addComponent(cancelSettings))
                 .addContainerGap())
         );
 
-        jTextField1.getAccessibleContext().setAccessibleName("loginField");
-        jTextField2.getAccessibleContext().setAccessibleName("pasField");
-        jComboBox1.getAccessibleContext().setAccessibleName("mailService");
-        jTextField3.getAccessibleContext().setAccessibleName("host");
-        jTextField3.getAccessibleContext().setAccessibleDescription("");
+        loginField.getAccessibleContext().setAccessibleName("loginField");
+        passwordField.getAccessibleContext().setAccessibleName("pasField");
+        serviceComboBox.getAccessibleContext().setAccessibleName("mailService");
+        smtpField.getAccessibleContext().setAccessibleName("host");
+        smtpField.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 public void readSettings(){
-       this.Settings[0]=jTextField1.getText(); //Login
-       this.Settings[1]=jTextField2.getText(); //Password
-       this.Settings[2]=jComboBox1.getSelectedItem().toString(); //mail server
-       this.Settings[3]=jTextField3.getText(); //host
-       this.Settings[4]=jTextField4.getText(); //port
+       this.Settings[0]=loginField.getText(); //Login
+       this.Settings[1]=passwordField.getText(); //Password
+       this.Settings[2]=serviceComboBox.getSelectedItem().toString(); //mail server
+       this.Settings[3]=smtpField.getText(); //host
+       this.Settings[4]=portField.getText(); //port
       // this.jButton2.addAncestorListener(null);
     }
     
     public String getSettings(int n){
         return this.Settings[n];
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-           controller.setSettings(this.jTextField5.getText(), this.jLabel1.getText(), this.jTextField2.getText(),
-             this.jComboBox1.getSelectedItem().toString(), this.jTextField3.getText(),
-             this.jTextField4.getText());
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void saveSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsActionPerformed
+           controller.setSettings(this.senderField.getText(), this.login.getText(), this.passwordField.getText(),
+             this.serviceComboBox.getSelectedItem().toString(), this.smtpField.getText(),
+             this.portField.getText());
+           setVisible(false);
+    }//GEN-LAST:event_saveSettingsActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void cancelSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSettingsActionPerformed
        controller.close();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_cancelSettingsActionPerformed
 
     public javax.swing.JButton ButtonClicked(){
-    return jButton1;
+    return saveSettings;
 }
         /**
      * @param args the command line arguments
@@ -215,19 +216,19 @@ public void readSettings(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton cancelSettings;
+    private javax.swing.JLabel login;
+    private javax.swing.JTextField loginField;
+    private javax.swing.JLabel password;
+    private javax.swing.JTextField passwordField;
+    private javax.swing.JLabel port;
+    private javax.swing.JTextField portField;
+    private javax.swing.JLabel postService;
+    private javax.swing.JButton saveSettings;
+    private javax.swing.JLabel sender;
+    private javax.swing.JTextField senderField;
+    private javax.swing.JComboBox serviceComboBox;
+    private javax.swing.JTextField smtpField;
+    private javax.swing.JLabel smtpName;
     // End of variables declaration//GEN-END:variables
 }

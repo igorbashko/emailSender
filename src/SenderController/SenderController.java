@@ -23,7 +23,7 @@ public class SenderController {
     private sendMail model = new sendMail();
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
-    
+    private SenderController controller;
 
     public void StartApplication(){
         Interface run = new Interface();
@@ -76,7 +76,12 @@ public void setSettings(String from, String username, String password, String ma
 public void send(String subject, String content, String recepient){
     model.sendMessage(subject, content, recepient);
 }
-   
+  public SenderController getController(){
+      return this.controller;
+  }
+public void setController(SenderController controller){
+    this.controller = controller;
+}         
  
 public void close(){
     System.exit(0);
