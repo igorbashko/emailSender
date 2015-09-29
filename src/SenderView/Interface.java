@@ -11,7 +11,7 @@ import SenderController.*;
  * @author igor
  */
 public class Interface extends javax.swing.JFrame {
- public SenderController controller = new SenderController();
+ private SenderController controller = SenderController.getController();
     /**
      * Creates new form Interface
      */
@@ -205,7 +205,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        controller.readEmailList();   
+       controller.readEmailList();   
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
@@ -225,7 +225,9 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
+       
+        controller.setSettings();
+        controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
     }//GEN-LAST:event_jButton2ActionPerformed
     public javax.swing.JButton ButtonClicked(){
       return jButton2;    
@@ -240,6 +242,10 @@ controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText
     /**
      * @param args the command line arguments
      */
+    private  void setText(){
+         jTextField2.setText("check"); jTextField3.setText("check"); jTextField1.setText("igor.littig@gmail.com");
+        jTextArea1.setText("Check yo");
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -268,6 +274,7 @@ controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Interface().setVisible(true);
+               setText();
             }
         });
     }

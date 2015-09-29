@@ -13,7 +13,7 @@ import SenderController.*;
 public class SenderMain {
     
     public static void main(String args[]){
-        SenderController controller = new SenderController();
+        SenderController controller =  SenderController.getController();
         controller.StartApplication();
     }
 }

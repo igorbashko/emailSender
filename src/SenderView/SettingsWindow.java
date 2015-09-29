@@ -13,7 +13,7 @@ import SenderController.*;
  */
 public class SettingsWindow extends javax.swing.JFrame {
 private String[] Settings = new String[5];
-private SenderController controller;
+private SenderController controller = SenderController.getController();
     /**
      * Creates new form SettingsWindow
      */
@@ -167,7 +167,7 @@ public void readSettings(){
         return this.Settings[n];
     }
     private void saveSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsActionPerformed
-           controller.setSettings(this.senderField.getText(), this.login.getText(), this.passwordField.getText(),
+           controller.setSettings(this.senderField.getText(), this.loginField.getText(), this.passwordField.getText(),
              this.serviceComboBox.getSelectedItem().toString(), this.smtpField.getText(),
              this.portField.getText());
            setVisible(false);

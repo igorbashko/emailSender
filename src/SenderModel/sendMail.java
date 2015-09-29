@@ -126,8 +126,8 @@ public class sendMail {
 	   }
        
         private Session session;
-        private String username;
-        private String password;
+        private String username = "igor.littig";
+        private String password = "sssl072011";
         private Properties props;
         
         /*
@@ -158,6 +158,27 @@ public class sendMail {
 	props.put(mailServer+".smtp.port", port);
         }
         
+        /*Test method for checking connection */
+        public void setProperties(){
+            Properties props2 = new Properties();
+            props2.put("mal.smtp.auth","true");
+            props2.put("mail.smtp.starttls.enable", "true");
+            props2.put("mail.smtp.ssl.enable", "true");
+            props2.put("mail.smtp.host", "smtp.mail.ru");
+            props2.put("mail.smtp.port", "465");
+           
+            final String username ="igor.littig";
+            final String password ="sssl072011";
+            this.props = props2;
+            
+            /*this.session.getInstance(this.props, new javax.mail.Authenticator() {
+                
+                  protected PasswordAuthentication getPaswordAuthentification(){
+                      
+                      return new PasswordAuthentication(username,password);
+                  }
+            });*/
+        }
               
         public void setSession(){
             final String username = this.username;
@@ -171,6 +192,10 @@ public class sendMail {
                   }
             });
         }
+        /*Probably will neve be used*/
+        public Session getSession(){
+            return this.session;
+        } 
         
         public void sendMessage(String emailHeader, String content, String to){
          //session is declared during authentification part   
@@ -188,7 +213,7 @@ public class sendMail {
         }
         BodyPart messagepart = new MimeBodyPart();
             try {
-                messagepart.setContent(content, "text/html UTF-8");
+                messagepart.setContent(content, "text/html; charset=UTF-8");
             } catch (MessagingException ex) {
                 System.out.println("Something wrong with content");
                 ex.printStackTrace();

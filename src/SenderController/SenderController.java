@@ -23,7 +23,9 @@ public class SenderController {
     private sendMail model = new sendMail();
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
-    private SenderController controller;
+    private static SenderController controller = null;
+    
+    private SenderController(){};
 
     public void StartApplication(){
         Interface run = new Interface();
@@ -62,22 +64,27 @@ public void checkHeader(){
  
    }
 
-public void setSettings(String from, String username, String password, String mailServer, String host, 
-        String port){
+public void setSettings(/*String from, String username, String password, String mailServer, String host, 
+        String port*/){
     //SettingsWindow settings;
     //String settings[] = new String[5];
     //settings.readSettings();
     //String check = settings.getSettings(0);
-        model.setAuthentificatio(username, 
+       /* model.setAuthentificatio(username, 
                 password, host, 
-                "mail.ru", port );
+                "mail.ru", port );*/
+    model.setProperties();
+    
   };
 
 public void send(String subject, String content, String recepient){
     model.sendMessage(subject, content, recepient);
 }
-  public SenderController getController(){
-      return this.controller;
+  public static SenderController getController(){
+      if(controller == null){
+          controller = new SenderController();
+      }
+      return controller;
   }
 public void setController(SenderController controller){
     this.controller = controller;
