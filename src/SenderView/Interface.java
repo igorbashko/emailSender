@@ -6,6 +6,10 @@
 
 package SenderView;
 import SenderController.*;
+import SenderModel.sendMail;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 /**
  *
  * @author igor
@@ -17,6 +21,7 @@ public class Interface extends javax.swing.JFrame {
      */
     public Interface() {
         initComponents();
+        setText();
     }
 
     /**
@@ -226,8 +231,15 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-        controller.setSettings();
-        controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
+       controller.setSettings();
+       controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
+    //sendMail model = new sendMail();
+     /*try {
+         model.Model();
+          
+     } catch (MessagingException ex) {
+         Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+     }*/
     }//GEN-LAST:event_jButton2ActionPerformed
     public javax.swing.JButton ButtonClicked(){
       return jButton2;    
@@ -274,7 +286,7 @@ public class Interface extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Interface().setVisible(true);
-               setText();
+       //        setText();
             }
         });
     }

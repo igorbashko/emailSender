@@ -167,9 +167,9 @@ public void readSettings(){
         return this.Settings[n];
     }
     private void saveSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsActionPerformed
-           controller.setSettings(this.senderField.getText(), this.loginField.getText(), this.passwordField.getText(),
+           controller.setSettings(/*this.senderField.getText(), this.loginField.getText(), this.passwordField.getText(),
              this.serviceComboBox.getSelectedItem().toString(), this.smtpField.getText(),
-             this.portField.getText());
+             this.portField.getText()*/);
            setVisible(false);
     }//GEN-LAST:event_saveSettingsActionPerformed
 

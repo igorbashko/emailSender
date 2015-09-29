@@ -13,6 +13,7 @@ import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.Address;
+import javax.mail.Authenticator;
 import javax.mail.BodyPart;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -161,7 +162,7 @@ public class sendMail {
         /*Test method for checking connection */
         public void setProperties(){
             Properties props2 = new Properties();
-            props2.put("mal.smtp.auth","true");
+            props2.put("mail.smtp.auth","true");
             props2.put("mail.smtp.starttls.enable", "true");
             props2.put("mail.smtp.ssl.enable", "true");
             props2.put("mail.smtp.host", "smtp.mail.ru");
@@ -170,14 +171,14 @@ public class sendMail {
             final String username ="igor.littig";
             final String password ="sssl072011";
             this.props = props2;
-            
-            /*this.session.getInstance(this.props, new javax.mail.Authenticator() {
-                
-                  protected PasswordAuthentication getPaswordAuthentification(){
-                      
-                      return new PasswordAuthentication(username,password);
-                  }
-            });*/
+            Authenticator aut;
+           /* aut = new javax.mail.Authenticator() {/*
+                protected PasswordAuthentication getPaswordAuthentification(){
+                    
+                    return new PasswordAuthentication("igor.littig@gmail.com","sssl072011");
+                };};
+                    
+            Session session= Session.getDefaultInstance(this.props, aut);*/
         }
               
         public void setSession(){
@@ -198,6 +199,17 @@ public class sendMail {
         } 
         
         public void sendMessage(String emailHeader, String content, String to){
+            final String username;
+            username = "igor.littig";
+            final String password = "sssl072011";
+            Session session= Session.getDefaultInstance(this.props, new javax.mail.Authenticator() {
+                
+                  protected PasswordAuthentication getPaswordAuthentification(){
+                      
+                      return new PasswordAuthentication(username,password);
+                  }
+            });
+        
          //session is declared during authentification part   
         Message message = new MimeMessage(session);
         try{
@@ -241,10 +253,10 @@ public class sendMail {
             ex.printStackTrace();
           }
             try {
-                Transport.send(message);
+                Transport.send(message, username, password);
             } catch (MessagingException ex) {
                 //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("wrong with recepient");
+            System.out.println("wrong with sending");
             ex.printStackTrace();
             }
         }
