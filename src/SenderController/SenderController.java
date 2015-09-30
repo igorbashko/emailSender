@@ -73,7 +73,8 @@ public void setSettings(/*String from, String username, String password, String 
        /* model.setAuthentificatio(username, 
                 password, host, 
                 "mail.ru", port );*/
-    model.setProperties();
+model.setProperties();
+model.setSession();
     
   };
 

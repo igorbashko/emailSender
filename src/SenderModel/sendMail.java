@@ -168,24 +168,15 @@ public class sendMail {
             props2.put("mail.smtp.host", "smtp.mail.ru");
             props2.put("mail.smtp.port", "465");
            
-            final String username ="igor.littig";
-            final String password ="sssl072011";
             this.props = props2;
             Authenticator aut;
-           /* aut = new javax.mail.Authenticator() {/*
-                protected PasswordAuthentication getPaswordAuthentification(){
-                    
-                    return new PasswordAuthentication("igor.littig@gmail.com","sssl072011");
-                };};
-                    
-            Session session= Session.getDefaultInstance(this.props, aut);*/
-        }
+                  }
               
         public void setSession(){
-            final String username = this.username;
-            final String password =this.password;
+            final String username = "igor.littig";
+            final String password ="sssl072011";
             
-            this.session.getInstance(this.props, new javax.mail.Authenticator() {
+            this.session=Session.getInstance(this.props, new javax.mail.Authenticator() {
                 
                   protected PasswordAuthentication getPaswordAuthentification(){
                       
@@ -199,19 +190,9 @@ public class sendMail {
         } 
         
         public void sendMessage(String emailHeader, String content, String to){
-            final String username;
-            username = "igor.littig";
-            final String password = "sssl072011";
-            Session session= Session.getDefaultInstance(this.props, new javax.mail.Authenticator() {
-                
-                  protected PasswordAuthentication getPaswordAuthentification(){
-                      
-                      return new PasswordAuthentication(username,password);
-                  }
-            });
-        
+                    
          //session is declared during authentification part   
-        Message message = new MimeMessage(session);
+        Message message = new MimeMessage(this.session);
         try{
         message.setFrom(new InternetAddress("Igor Test<igor.littig@mail.ru>"));
         }   catch (MessagingException ex) {

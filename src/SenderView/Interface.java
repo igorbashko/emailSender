@@ -210,7 +210,8 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       controller.readEmailList();   
+       new chooseFile().setVisible(true);
+       //controller.readEmailList();   
     }//GEN-LAST:event_jButton1ActionPerformed
     
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
