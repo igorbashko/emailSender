@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 package SenderView;
-
+import SenderController.*;
 /**
  *
  * @author igorbashka
  */
 public class chooseFile extends javax.swing.JFrame {
-
+    private SenderController cont = SenderController.getController();
     /**
      * Creates new form chooseFile
      */
@@ -31,6 +31,12 @@ public class chooseFile extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFileChooser1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -46,6 +52,10 @@ public class chooseFile extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+        cont.setPathToCustomers(jFileChooser1.getSelectedFile().toString());
+    }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
      * @param args the command line arguments

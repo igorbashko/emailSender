@@ -23,6 +23,7 @@ public class SenderController {
     private sendMail model = new sendMail();
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
+    private String pathToCustomers;
     private static SenderController controller = null;
     
     private SenderController(){};
@@ -47,6 +48,14 @@ public class SenderController {
 	
     }    
 }
+    public void setPathToCustomers(String path){
+        pathToCustomers = path;
+    }
+    
+    public String getPathToCustomers(){
+        return pathToCustomers;
+    }
+    
 public void checkHeader(){
     final Interface view = new Interface();
  actionListener = new ActionListener() {

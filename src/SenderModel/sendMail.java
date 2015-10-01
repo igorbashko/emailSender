@@ -130,6 +130,8 @@ public class sendMail {
         private String username = "igor.littig";
         private String password = "sssl072011";
         private Properties props;
+        private Message message; 
+        private File pathToFile;
         
         /*
         *Subject string validation
@@ -169,8 +171,7 @@ public class sendMail {
             props2.put("mail.smtp.port", "465");
            
             this.props = props2;
-            Authenticator aut;
-                  }
+            }
               
         public void setSession(){
             final String username = "igor.littig";
@@ -184,15 +185,40 @@ public class sendMail {
                   }
             });
         }
-        /*Probably will neve be used*/
-        public Session getSession(){
-            return this.session;
-        } 
+        public void messageInitialize(){
+            this.message = new MimeMessage(this.session);
+        }
+        /*Everything will be changed*/
+        public void setPathCustomers(String path){
+            pathToFile = new File(path);
+        }
+        
+        /*Divide in 2. Set path and loop for sending emails*/
+       public void setPathCustomers1(String path, String errors){
+            try{
+            File pathToFile = new File(path);
+            Scanner sc = new Scanner(pathToFile);
+            PrintWriter print = new PrintWriter(errors);
+            while(sc.hasNext()){
+                String adress = sc.next();
+                try {
+                    message.setRecipients(Message.RecipientType.TO,
+                            InternetAddress.parse(adress));
+                } catch (MessagingException ex) {
+                   // Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
+                }
+              }
+            
+            }catch(FileNotFoundException ex){
+                ex.printStackTrace();
+            }
+        }
         
         public void sendMessage(String emailHeader, String content, String to){
                     
          //session is declared during authentification part   
-        Message message = new MimeMessage(this.session);
+        message = new MimeMessage(this.session);
         try{
         message.setFrom(new InternetAddress("Igor Test<igor.littig@mail.ru>"));
         }   catch (MessagingException ex) {
