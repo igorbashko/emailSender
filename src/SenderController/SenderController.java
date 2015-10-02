@@ -24,14 +24,16 @@ public class SenderController {
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
     private String pathToCustomers;
+    private Interface view;
     private static SenderController controller = null;
     
     private SenderController(){};
 
     public void StartApplication(){
-        Interface run = new Interface();
-        run.setVisible(true);
-        //view.setVisible(true);
+        //Interface run = new Interface();
+        view = new Interface();
+        //run.setVisible(true);
+        view.setVisible(true);
     }
   /*
     Reading user from a given list
@@ -49,7 +51,7 @@ public class SenderController {
     }    
 }
     public void setPathToCustomers(String path){
-        pathToCustomers = path;
+        view.setPathCustomers(path);
     }
     
     public String getPathToCustomers(){
@@ -73,8 +75,8 @@ public void checkHeader(){
  
    }
 
-public void setSettings(/*String from, String username, String password, String mailServer, String host, 
-        String port*/){
+public void setSettings(String sender, String username, String password, String host, String mailServer, 
+        String port){
     //SettingsWindow settings;
     //String settings[] = new String[5];
     //settings.readSettings();
@@ -82,13 +84,15 @@ public void setSettings(/*String from, String username, String password, String 
        /* model.setAuthentificatio(username, 
                 password, host, 
                 "mail.ru", port );*/
-model.setProperties();
+//model.setProperties();
+model.setAuthentificatio(sender, username, password, host, mailServer, port);
 model.setSession();
     
   };
-
+ 
 public void send(String subject, String content, String recepient){
-    model.sendMessage(subject, content, recepient);
+    model.setMessage(subject, content, recepient);
+    model.readRecepientsAndSend(recepient, "/home/igorbashka/Documents/errors.txt");
 }
   public static SenderController getController(){
       if(controller == null){

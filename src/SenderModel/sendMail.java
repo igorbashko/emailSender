@@ -127,11 +127,12 @@ public class sendMail {
 	   }
        
         private Session session;
-        private String username = "igor.littig";
-        private String password = "sssl072011";
+        private String username;
+        private String password;
         private Properties props;
         private Message message; 
         private File pathToFile;
+        private String sender;
         
         /*
         *Subject string validation
@@ -150,14 +151,15 @@ public class sendMail {
         /*
         Setting authentification process
         */
-        public void setAuthentificatio(String username, String password, String host, String mailServer, String port){
+        public void setAuthentificatio(String sender, String username, String password, String host, String mailServer, String port){
+        this.sender=sender;
         this.username = username;
         this.password = password;
         this.props = new Properties();
         props.put(mailServer+".smtp.auth", "true");
 	props.put(mailServer+".smtps.starttls.enable", "true");
 	props.put(mailServer+".smtp.ssl.enable", "true");
-	props.put(mailServer+".smtp.host",host);
+	props.put(mailServer+".smtp.host", host);
 	props.put(mailServer+".smtp.port", port);
         }
         
@@ -174,8 +176,8 @@ public class sendMail {
             }
               
         public void setSession(){
-            final String username = "igor.littig";
-            final String password ="sssl072011";
+            /*final String username = "igor.littig";
+            final String password ="sssl072011";*/
             
             this.session=Session.getInstance(this.props, new javax.mail.Authenticator() {
                 
@@ -194,20 +196,21 @@ public class sendMail {
         }
         
         /*Divide in 2. Set path and loop for sending emails*/
-       public void setPathCustomers1(String path, String errors){
+       public void readRecepientsAndSend(String path, String errors){
             try{
             File pathToFile = new File(path);
             Scanner sc = new Scanner(pathToFile);
             PrintWriter print = new PrintWriter(errors);
             while(sc.hasNext()){
-                String adress = sc.next();
-                try {
+                String address = sc.next();
+                /*try {
                     message.setRecipients(Message.RecipientType.TO,
                             InternetAddress.parse(adress));
                 } catch (MessagingException ex) {
-                   // Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
                     ex.printStackTrace();
-                }
+                }*/
+                setRecepients(address);
+                send();
               }
             
             }catch(FileNotFoundException ex){
@@ -215,12 +218,12 @@ public class sendMail {
             }
         }
         
-        public void sendMessage(String emailHeader, String content, String to){
+        public void setMessage(String emailHeader, String content, String to){
                     
          //session is declared during authentification part   
         message = new MimeMessage(this.session);
         try{
-        message.setFrom(new InternetAddress("Igor Test<igor.littig@mail.ru>"));
+        message.setFrom(new InternetAddress(sender));
         }   catch (MessagingException ex) {
                System.out.print("Something wrong with adress");
                ex.printStackTrace();
@@ -252,19 +255,34 @@ public class sendMail {
             System.out.println("Wrong with setting multipart content");
             ex.printStackTrace();
             }
-            try {
+            /*try {
                 message.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
             } catch (MessagingException ex) {
                 //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Wrong with recepient");
             ex.printStackTrace();
-          }
-            try {
+          }*/setRecepients(to);
+            /*try {
                 Transport.send(message, username, password);
             } catch (MessagingException ex) {
                 //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("wrong with sending");
             ex.printStackTrace();
+            }*/
+          //send();
+        }
+        private void setRecepients(String email){
+            try{
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(email));
+        }catch(MessagingException ex){
+            ex.printStackTrace();
+        }
+      }
+        private void send(){
+            try{
+                Transport.send(message, username, password);
+            }catch(MessagingException ex){
+                ex.printStackTrace();
             }
         }
         

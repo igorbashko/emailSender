@@ -19,6 +19,9 @@ private SenderController controller = SenderController.getController();
      */
     public SettingsWindow() {
         initComponents();
+        loginField.setText("igor.littig"); passwordField.setText("sssl072011");
+        smtpField.setText("smtp.mail.ru"); portField.setText("465");
+        senderField.setText("Igor Littig");
     }
 
     /**
@@ -167,9 +170,8 @@ public void readSettings(){
         return this.Settings[n];
     }
     private void saveSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveSettingsActionPerformed
-           controller.setSettings(/*this.senderField.getText(), this.loginField.getText(), this.passwordField.getText(),
-             this.serviceComboBox.getSelectedItem().toString(), this.smtpField.getText(),
-             this.portField.getText()*/);
+           controller.setSettings(senderField.getText(),this.loginField.getText(), this.passwordField.getText(),
+             this.smtpField.getText(),"mail", this.portField.getText());
            setVisible(false);
     }//GEN-LAST:event_saveSettingsActionPerformed
 
