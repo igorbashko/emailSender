@@ -55,6 +55,7 @@ public class chooseFile extends javax.swing.JFrame {
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
         cont.setPathToCustomers(jFileChooser1.getSelectedFile().toString());
+        setVisible(false);
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**

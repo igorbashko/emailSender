@@ -232,7 +232,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-       controller.setSettings();
+       //controller.setSettings();
        controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
     //sendMail model = new sendMail();
      /*try {
@@ -258,6 +258,9 @@ public class Interface extends javax.swing.JFrame {
     private  void setText(){
          jTextField2.setText("check"); jTextField3.setText("check"); jTextField1.setText("igor.littig@gmail.com");
         jTextArea1.setText("Check yo");
+    }
+    public void setPathCustomers(String path){
+        jTextField1.setText(path);
     }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
