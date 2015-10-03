@@ -24,6 +24,7 @@ public class SenderController {
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
     private String pathToCustomers;
+    private sendTracker tracker;
     private static SenderController controller = null;
     
     private SenderController(){};
@@ -33,9 +34,16 @@ public class SenderController {
         run.setVisible(true);
         //view.setVisible(true);
     }
-  /*
+ 
+    public void trackerInitialize(){
+        tracker = new sendTracker();
+    }
+    public void addToTracker(String adress){
+        tracker.addSended(adress);
+    }
+   /*
     Reading user from a given list
-   */    
+   */
     public void readEmailList(){
         try{
       File adressesList = new File("/home/igor/Documents/customers/newList04_2015/MyEmail");
