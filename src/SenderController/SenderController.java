@@ -25,6 +25,7 @@ public class SenderController {
     private ActionListener actionListener;
     private String pathToCustomers;
     private Interface view;
+    private sendTracker2 tracker;
     private static SenderController controller = null;
     
     private SenderController(){};
@@ -37,7 +38,8 @@ public class SenderController {
     }
  
     public void trackerInitialize(){
-        tracker = new sendTracker();
+        tracker = new sendTracker2();
+        tracker.setVisible(true);
     }
     public void addToTracker(String adress){
         tracker.addSended(adress);
@@ -99,7 +101,8 @@ model.setSession();
  
 public void send(String subject, String content, String recepient){
     model.setMessage(subject, content, recepient);
-    model.readRecepientsAndSend(recepient, "/home/igorbashka/Documents/errors.txt");
+    model.tarckerInitiaize();
+    model.readRecepientsAndSend(recepient, "/home/igor/Documents/errors.txt");
 }
   public static SenderController getController(){
       if(controller == null){

@@ -233,6 +233,8 @@ public class Interface extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
        //controller.setSettings();
+       //controller.trackerInitialize();
+        //new sendTracker2().setVisible(true);
        controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
     //sendMail model = new sendMail();
      /*try {

@@ -21,7 +21,7 @@ private SenderController controller = SenderController.getController();
         initComponents();
         loginField.setText("igor.littig"); passwordField.setText("sssl072011");
         smtpField.setText("smtp.mail.ru"); portField.setText("465");
-        senderField.setText("Igor Littig");
+        senderField.setText("igor.littig@mail.ru");
     }
 
     /**

@@ -29,6 +29,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
+import SenderController.SenderController;
 public class sendMail {
 	/*
 	 * This method is used for multiple attachments in one session
@@ -133,10 +134,16 @@ public class sendMail {
         private Message message; 
         private File pathToFile;
         private String sender;
-        
+       // private SenderController cont = SenderController.getController();
+        private sendTracker2 tracker;
         /*
         *Subject string validation
         */    
+        public void tarckerInitiaize(){
+            tracker = new sendTracker2();
+            tracker.setVisible(true);
+        }
+        
         public Boolean checkHeaderEmpty(String emailHeader ){
            Boolean result = null;
             if(emailHeader !=null && !emailHeader.isEmpty())
@@ -198,6 +205,7 @@ public class sendMail {
         /*Divide in 2. Set path and loop for sending emails*/
        public void readRecepientsAndSend(String path, String errors){
             try{
+                SenderController cont= SenderController.getController();
             File pathToFile = new File(path);
             Scanner sc = new Scanner(pathToFile);
             PrintWriter print = new PrintWriter(errors);
@@ -211,6 +219,8 @@ public class sendMail {
                 }*/
                 setRecepients(address);
                 send();
+                tracker.addSended(address);
+                //cont.addToTracker(address);
               }
             
             }catch(FileNotFoundException ex){
