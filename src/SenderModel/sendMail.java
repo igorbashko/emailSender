@@ -30,6 +30,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.internet.MimeUtility;
 
 import SenderController.SenderController;
+import javax.swing.SwingUtilities;
 public class sendMail {
 	/*
 	 * This method is used for multiple attachments in one session
@@ -135,13 +136,16 @@ public class sendMail {
         private File pathToFile;
         private String sender;
        // private SenderController cont = SenderController.getController();
-        private sendTracker2 tracker;
+       // private sendTracker2 tracker;
         /*
         *Subject string validation
         */    
         public void tarckerInitiaize(){
-            tracker = new sendTracker2();
+            SwingUtilities.invokeLater(new Runnable(){
+            public void run(){
+                tracker = new sendTracker2();
             tracker.setVisible(true);
+            }});
         }
         
         public Boolean checkHeaderEmpty(String emailHeader ){
@@ -209,7 +213,13 @@ public class sendMail {
             File pathToFile = new File(path);
             Scanner sc = new Scanner(pathToFile);
             PrintWriter print = new PrintWriter(errors);
-            while(sc.hasNext()){
+               while(sc.hasNext()){
+                   SwingUtilities.invokeLater(new Runnable(){
+                       public void run(){
+                           sendTracker2 tracker = new sendTracker2();
+                           tracker.setVisible(true);
+                       }
+                   });
                 String address = sc.next();
                 /*try {
                     message.setRecipients(Message.RecipientType.TO,
@@ -217,12 +227,12 @@ public class sendMail {
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
                 }*/
+                tracker.addSended(address);
                 setRecepients(address);
                 send();
-                tracker.addSended(address);
+                //tracker.addSended(address);
                 //cont.addToTracker(address);
-              }
-            
+               }            
             }catch(FileNotFoundException ex){
                 ex.printStackTrace();
             }

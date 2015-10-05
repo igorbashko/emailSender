@@ -6,6 +6,7 @@
 
 package SenderCollection;
 import SenderController.*;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author igor
@@ -13,7 +14,9 @@ import SenderController.*;
 public class SenderMain {
     
     public static void main(String args[]){
-        SenderController controller =  SenderController.getController();
+        SwingUtilities.invokeLater(new Runnable(){
+        public void run(){
+            SenderController controller =  SenderController.getController();
         controller.StartApplication();
-    }
-}
+    }});
+}}

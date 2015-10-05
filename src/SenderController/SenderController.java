@@ -101,7 +101,7 @@ model.setSession();
  
 public void send(String subject, String content, String recepient){
     model.setMessage(subject, content, recepient);
-    model.tarckerInitiaize();
+    //model.tarckerInitiaize();
     model.readRecepientsAndSend(recepient, "/home/igor/Documents/errors.txt");
 }
   public static SenderController getController(){

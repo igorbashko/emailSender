@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package SenderView;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,7 +19,12 @@ public class sendTracker2 extends javax.swing.JFrame {
         initComponents();
     }
 public void addSended(String sended){
+    SwingUtilities.invokeLater(new Runnable(){
+    @Override
+    public void run(){
     sendedList.append(sended);
+    }
+ });
 }
     /**
      * This method is called from within the constructor to initialize the form.
