@@ -18,13 +18,13 @@ public class sendTracker2 extends javax.swing.JFrame {
     public sendTracker2() {
         initComponents();
     }
+    
+      
 public void addSended(String sended){
-    SwingUtilities.invokeLater(new Runnable(){
-    @Override
-    public void run(){
-    sendedList.append(sended);
-    }
- });
+       sendedList.append(sended);
+  }
+public boolean getIsShowing(){
+  return sendedList.isShowing();
 }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,16 +51,17 @@ public void addSended(String sended){
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
-                .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(stopButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(251, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(stopButton)
                 .addContainerGap())
         );
@@ -96,12 +97,12 @@ public void addSended(String sended){
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        //java.awt.EventQueue.invokeLater(new Runnable() {
+           // public void run() {
                 new sendTracker2().setVisible(true);
-            }
-        });
-    }
+           // }
+       // });
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

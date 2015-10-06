@@ -83,7 +83,22 @@ public void checkHeader(){
  view.ButtonClicked().addActionListener(actionListener);
  
    }
-
+public void checkRunnable(){
+    (new Thread(){
+        
+    public void run(){
+    for(int i=0;i<10;i++){
+            String s = "Hello"; 
+            view.checkRunnable(s);
+            try{
+                Thread.sleep(1000);
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();
+            }
+        }
+}
+    }).start();
+}
 public void setSettings(String sender, String username, String password, String host, String mailServer, 
         String port){
     //SettingsWindow settings;
@@ -101,9 +116,15 @@ model.setSession();
  
 public void send(String subject, String content, String recepient){
     model.setMessage(subject, content, recepient);
-    //model.tarckerInitiaize();
+    model.tarckerInitiaize();
+    try{
+        Thread.sleep(2000);
+    }catch(InterruptedException ex){
+        Thread.currentThread().interrupt();
+    }
+    if(model.getisShowing()){
     model.readRecepientsAndSend(recepient, "/home/igor/Documents/errors.txt");
-}
+}}
   public static SenderController getController(){
       if(controller == null){
           controller = new SenderController();

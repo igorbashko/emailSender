@@ -10,6 +10,8 @@ import SenderModel.sendMail;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
+import javax.swing.SwingUtilities;
+
 /**
  *
  * @author igor
@@ -227,7 +229,8 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         controller.close();
+         //controller.close();
+        controller.checkRunnable();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -264,6 +267,11 @@ public class Interface extends javax.swing.JFrame {
     public void setPathCustomers(String path){
         jTextField1.setText(path);
     }
+    public void checkRunnable(final String n){
+      
+                jTextArea1.append(n);
+          
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -289,12 +297,11 @@ public class Interface extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+       
                 new Interface().setVisible(true);
        //        setText();
-            }
-        });
+            
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
