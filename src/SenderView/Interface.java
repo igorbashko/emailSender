@@ -230,7 +230,8 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
          //controller.close();
-        controller.checkRunnable();
+       //controller.checkRunnable();
+        controller.trackerInitialize();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -238,6 +239,7 @@ public class Interface extends javax.swing.JFrame {
        //controller.setSettings();
        //controller.trackerInitialize();
         //new sendTracker2().setVisible(true);
+        controller.trackerInitialize();
        controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
     //sendMail model = new sendMail();
      /*try {

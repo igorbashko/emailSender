@@ -20,7 +20,7 @@ public class sendTracker2 extends javax.swing.JFrame {
     }
     
       
-public void addSended(String sended){
+public void addSended(final String sended){
        sendedList.append(sended);
   }
 public boolean getIsShowing(){

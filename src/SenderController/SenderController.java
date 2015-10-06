@@ -20,7 +20,7 @@ import java.awt.event.ActionListener;
 
 public class SenderController {
     //public Interface view = new Interface();
-    private sendMail model = new sendMail();
+    private sendMail model;
     //private SettingsWindow settings = new SettingsWindow();
     private ActionListener actionListener;
     private String pathToCustomers;
@@ -32,6 +32,7 @@ public class SenderController {
 
     public void StartApplication(){
         //Interface run = new Interface();
+        model = new sendMail();
         view = new Interface();
         //run.setVisible(true);
         view.setVisible(true);
@@ -88,8 +89,8 @@ public void checkRunnable(){
         
     public void run(){
     for(int i=0;i<10;i++){
-            String s = "Hello"; 
-            view.checkRunnable(s);
+            String s = "Hello";
+                view.checkRunnable(s);
             try{
                 Thread.sleep(1000);
             }catch(InterruptedException ex){
@@ -113,18 +114,27 @@ model.setAuthentificatio(sender, username, password, host, mailServer, port);
 model.setSession();
     
   };
- 
+/*Delete after use*/
+ public void authentificateTracker(){
+    tracker = new sendTracker2();
+ }
+ public void addToList(final String add ){
+     
+            tracker.addSended(add);
+       
+ }
 public void send(String subject, String content, String recepient){
     model.setMessage(subject, content, recepient);
-    model.tarckerInitiaize();
+  //  model.tarckerInitiaize();
     try{
         Thread.sleep(2000);
     }catch(InterruptedException ex){
         Thread.currentThread().interrupt();
     }
-    if(model.getisShowing()){
-    model.readRecepientsAndSend(recepient, "/home/igor/Documents/errors.txt");
-}}
+  //  if(model.getisShowing()){
+    model.readRecepientsAndSend(recepient);
+//}
+}
   public static SenderController getController(){
       if(controller == null){
           controller = new SenderController();

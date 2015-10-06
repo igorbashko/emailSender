@@ -135,15 +135,15 @@ public class sendMail {
         private Message message; 
         private File pathToFile;
         private String sender;
-       // private SenderController cont = SenderController.getController();
+        private SenderController cont = SenderController.getController();
         private sendTracker2 tracker;
         /*
         *Subject string validation
         */    
         public void tarckerInitiaize(){
             
-            tracker = new sendTracker2();
-            tracker.setVisible(true);
+            this.tracker = new sendTracker2();
+            this.tracker.setVisible(true);
          
         }
         
@@ -206,12 +206,14 @@ public class sendMail {
         }
         
         /*Divide in 2. Set path and loop for sending emails*/
-       public void readRecepientsAndSend(String path, String errors){
+       public void readRecepientsAndSend(String path){
             try{
                 SenderController cont= SenderController.getController();
             File pathToFile = new File(path);
             Scanner sc = new Scanner(pathToFile);
-            PrintWriter print = new PrintWriter(errors);
+//            PrintWriter print = new PrintWriter(errors);
+            (new Thread(){
+                public void run(){
                while(sc.hasNext()){
                final String address = sc.next();
                 /*try {
@@ -224,19 +226,19 @@ public class sendMail {
                // tracker.addSended(address);
                 setRecepients(address);
                 send();
-                (new Thread(){
+               
                     
-                public void run(){
-                tracker.addSended(address);
-                //cont.addToTracker(address);
-                }
-                }).start();
+                
+               // tracker.addSended(address);
+                cont.addToList(address+"/n");
+                
                 try{
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
                 }
-               }            
+               }}}).start();
+                        
             }catch(FileNotFoundException ex){
                 ex.printStackTrace();
             }
