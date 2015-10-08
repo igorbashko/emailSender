@@ -27,6 +27,7 @@ public class SenderController {
     private Interface view;
     private sendTracker2 tracker;
     private static SenderController controller = null;
+    private boolean sentOrNot;
     
     private SenderController(){};
 
@@ -134,6 +135,13 @@ public void send(String subject, String content, String recepient){
   //  if(model.getisShowing()){
     model.readRecepientsAndSend(recepient);
 //}
+}
+public boolean getSentOrNot(){
+    return sentOrNot;
+}
+
+public void setSentOrNot(boolean sentOrNot){
+    this.sentOrNot = sentOrNot;
 }
   public static SenderController getController(){
       if(controller == null){

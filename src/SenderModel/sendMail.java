@@ -222,31 +222,26 @@ public class sendMail {
                 } catch (MessagingException ex) {
                     ex.printStackTrace();
                 }*/
-               
-               // tracker.addSended(address);
                 setRecepients(address);
                 send();
-               
-                    
-                
-               // tracker.addSended(address);
-                cont.addToList(address+"/n");
-                
+                if(cont.getSentOrNot()){
+                cont.addToList(address+" sent");
+                }else{
+                    cont.addToList(address + " not sent");
+                }
+                /*
                 try{
                     Thread.sleep(1000);
                 }catch(InterruptedException ex){
                     Thread.currentThread().interrupt();
-                }
+                }*/
                }}}).start();
                         
             }catch(FileNotFoundException ex){
                 ex.printStackTrace();
             }
         }
-        public boolean getisShowing(){
-            return tracker.getIsShowing();
-        }
-        public void setMessage(String emailHeader, String content, String to){
+       public void setMessage(String emailHeader, String content, String to){
                     
          //session is declared during authentification part   
         message = new MimeMessage(this.session);
@@ -309,8 +304,11 @@ public class sendMail {
         private void send(){
             try{
                 Transport.send(message, username, password);
+                cont.setSentOrNot(true);
             }catch(MessagingException ex){
+                cont.setSentOrNot(false);
                 ex.printStackTrace();
+                //cont.addToList(Message.RecipientType.TO.toString()+" not sent");
             }
         }
         

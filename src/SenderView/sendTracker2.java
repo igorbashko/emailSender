@@ -19,9 +19,9 @@ public class sendTracker2 extends javax.swing.JFrame {
         initComponents();
     }
     
-      
-public void addSended(final String sended){
+  public void addSended(final String sended){
        sendedList.append(sended);
+       sendedList.append(System.lineSeparator());
   }
 public boolean getIsShowing(){
   return sendedList.isShowing();
