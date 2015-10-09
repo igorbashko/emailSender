@@ -19,9 +19,9 @@ private SenderController controller = SenderController.getController();
      */
     public SettingsWindow() {
         initComponents();
-        loginField.setText("igor.littig"); passwordField.setText("sssl072011");
+        loginField.setText("zakaz.artmebel01@mail.ru"); passwordField.setText("QWE789qwe");
         smtpField.setText("smtp.mail.ru"); portField.setText("465");
-        senderField.setText("igor.littig@mail.ru");
+        senderField.setText("Art-Mebel 01<zakaz.artmebel01@mail.ru>");
     }
 
     /**

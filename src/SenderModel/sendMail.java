@@ -137,6 +137,7 @@ public class sendMail {
         private String sender;
         private SenderController cont = SenderController.getController();
         private sendTracker2 tracker;
+        private static BodyPart messagePartYo;
         /*
         *Subject string validation
         */    
@@ -241,6 +242,14 @@ public class sendMail {
                 ex.printStackTrace();
             }
         }
+       private static BodyPart addAttachementYo(String file, String tag) throws MessagingException{
+           messagePartYo = new MimeBodyPart();
+           DataSource source = new FileDataSource(file);
+           messagePartYo.setDataHandler(new DataHandler(source));
+           messagePartYo.setFileName(source.getName());
+           messagePartYo.setHeader("Content-ID", tag);
+           return messagePartYo;
+       }
        public void setMessage(String emailHeader, String content, String to){
                     
          //session is declared during authentification part   
@@ -257,7 +266,7 @@ public class sendMail {
             e.printStackTrace();
         }
         BodyPart messagepart = new MimeBodyPart();
-            try {
+             try {
                 messagepart.setContent(content, "text/html; charset=UTF-8");
             } catch (MessagingException ex) {
                 System.out.println("Something wrong with content");
@@ -269,6 +278,13 @@ public class sendMail {
             } catch (MessagingException ex) {
                 //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Wrong with bodypart adding");
+                ex.printStackTrace();
+            }
+            try {
+                multipart.addBodyPart(addAttachementYo("/home/igor/Pictures/10_2015/Promotions/edge.jpg","<image>"));
+            } catch (MessagingException ex) {
+               // Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Something wrong with attachement");
                 ex.printStackTrace();
             }
             try {
