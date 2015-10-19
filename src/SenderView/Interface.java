@@ -250,18 +250,8 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-       //controller.setSettings();
-       //controller.trackerInitialize();
-        //new sendTracker2().setVisible(true);
        controller.trackerInitialize();
-       controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());
-    //sendMail model = new sendMail();
-     /*try {
-         model.Model();
-          
-     } catch (MessagingException ex) {
-         Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-     }*/
+       controller.send(jTextField3.getText(), jTextArea1.getText(), jTextField1.getText());   
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -282,7 +272,11 @@ public class Interface extends javax.swing.JFrame {
      */
     private  void setText(){
          jTextField2.setText("Новое поступление кромки ART-Мебель01"); jTextField3.setText("Новое поступление кромки ART-Мебель01"); jTextField1.setText("igor.littig@gmail.com");
-        jTextArea1.setText("Широкий ассортимент кромки по низким ценам <img src=\"cid:image\">");
+        jTextArea1.setText("Широкий ассортимент кромки по низким ценам");
+    }
+    /*Method for appending image tag to the text area*/
+    public void addPictureText(){
+        jTextArea1.append("<img src=\"cid:image\">");
     }
     public void setPathCustomers(String path){
         jTextField1.setText(path);
@@ -314,10 +308,7 @@ public class Interface extends javax.swing.JFrame {
         /* Create and display the form */
        
                 new Interface().setVisible(true);
-       //        setText();
-            
-        
-    }
+      }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

@@ -212,17 +212,10 @@ public class sendMail {
                 SenderController cont= SenderController.getController();
             File pathToFile = new File(path);
             Scanner sc = new Scanner(pathToFile);
-//            PrintWriter print = new PrintWriter(errors);
             (new Thread(){
                 public void run(){
                while(sc.hasNext()){
                final String address = sc.next();
-                /*try {
-                    message.setRecipients(Message.RecipientType.TO,
-                            InternetAddress.parse(adress));
-                } catch (MessagingException ex) {
-                    ex.printStackTrace();
-                }*/
                 setRecepients(address);
                 send();
                 if(cont.getSentOrNot()){
@@ -230,12 +223,6 @@ public class sendMail {
                 }else{
                     cont.addToList(address + " not sent");
                 }
-                /*
-                try{
-                    Thread.sleep(1000);
-                }catch(InterruptedException ex){
-                    Thread.currentThread().interrupt();
-                }*/
                }}}).start();
                         
             }catch(FileNotFoundException ex){
@@ -276,12 +263,11 @@ public class sendMail {
             try {
                 multipart.addBodyPart(messagepart);
             } catch (MessagingException ex) {
-                //Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Wrong with bodypart adding");
+                           System.out.println("Wrong with bodypart adding");
                 ex.printStackTrace();
             }
             try {
-                multipart.addBodyPart(addAttachementYo("/home/igor/Pictures/10_2015/Promotions/edge.jpg","<image>"));
+                multipart.addBodyPart(addAttachementYo(cont.getPicture(),"<image>"));
             } catch (MessagingException ex) {
                // Logger.getLogger(sendMail.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Something wrong with attachement");
