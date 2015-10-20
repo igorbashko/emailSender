@@ -75,13 +75,6 @@ model.setSession();
   }
 public void send(String subject, String content, String recepient){
     model.setMessage(subject, content, recepient);
-  
-    try{
-        Thread.sleep(2000);
-    }catch(InterruptedException ex){
-        Thread.currentThread().interrupt();
-    }
-  
     model.readRecepientsAndSend(recepient);
 }
 public boolean getSentOrNot(){

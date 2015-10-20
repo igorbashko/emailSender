@@ -6,6 +6,8 @@
 
 package SenderView;
 import SenderController.*;
+import javax.swing.WindowConstants;
+import javax.swing.JFrame;
 
 /**
  *
@@ -22,6 +24,7 @@ private SenderController controller = SenderController.getController();
         loginField.setText("zakaz.artmebel01@mail.ru"); passwordField.setText("QWE789qwe");
         smtpField.setText("smtp.mail.ru"); portField.setText("465");
         senderField.setText("Art-Mebel 01<zakaz.artmebel01@mail.ru>");
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
     }
 
     /**
@@ -176,7 +179,7 @@ public void readSettings(){
     }//GEN-LAST:event_saveSettingsActionPerformed
 
     private void cancelSettingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelSettingsActionPerformed
-       controller.close();
+       setVisible(true);
     }//GEN-LAST:event_cancelSettingsActionPerformed
 
     public javax.swing.JButton ButtonClicked(){

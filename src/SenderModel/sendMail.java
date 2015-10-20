@@ -310,7 +310,11 @@ public class sendMail {
             }catch(MessagingException ex){
                 cont.setSentOrNot(false);
                 ex.printStackTrace();
-                //cont.addToList(Message.RecipientType.TO.toString()+" not sent");
+               }
+            try{
+                Thread.sleep(18000);
+            }catch(InterruptedException ex){
+                Thread.currentThread().interrupt();;
             }
         }
         

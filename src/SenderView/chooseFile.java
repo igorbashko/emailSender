@@ -5,6 +5,8 @@
  */
 package SenderView;
 import SenderController.*;
+import javax.swing.JFileChooser;
+import javax.swing.SwingUtilities;
 /**
  *
  * @author igorbashka
@@ -54,8 +56,13 @@ public class chooseFile extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
+      if(JFileChooser.CANCEL_OPTION == 0){
+          setVisible(false);
+      }else{
         cont.setPathToCustomers(jFileChooser1.getSelectedFile().toString());
         setVisible(false);
+      }
+        
     }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
