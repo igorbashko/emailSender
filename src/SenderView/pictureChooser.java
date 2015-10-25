@@ -6,6 +6,7 @@
 
 package SenderView;
 import SenderController.*;
+import javax.swing.JFileChooser;
 /**
  *
  * @author igor
@@ -16,7 +17,15 @@ private  SenderController controller = SenderController.getController() ;
      * Creates new form pictureChooser
      */
     public pictureChooser() {
-        initComponents();
+        //initComponents();
+        jFileChooser1 = new JFileChooser();
+        int returnResult = jFileChooser1.showOpenDialog(this);
+        if (returnResult == JFileChooser.APPROVE_OPTION){
+            controller.setPicture(jFileChooser1.getSelectedFile());
+            controller.addImageTag();
+        }else{
+         dispose();
+        }
     }
 
     /**
@@ -32,12 +41,6 @@ private  SenderController controller = SenderController.getController() ;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -51,12 +54,6 @@ private  SenderController controller = SenderController.getController() ;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-        controller.setPicture(jFileChooser1.getSelectedFile());
-        controller.addImageTag();
-        setVisible(false);
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
 
     /**
      * @param args the command line arguments

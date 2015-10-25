@@ -27,6 +27,7 @@ public class SenderController {
     private sendTracker2 tracker;
     private static SenderController controller = null;
     private boolean sentOrNot;
+    private pictureChooser pictureChooser;
     
     private SenderController(){};
 
@@ -59,6 +60,10 @@ public void setPicture(File picture){
 /*Method for returning path of the picture*/
 public String getPicture(){
     return this.picture.getAbsolutePath();
+}
+public void createPictureChooser(){
+    pictureChooser = new pictureChooser();
+    pictureCh
 }
 public void addImageTag(){
     view.addPictureText();
