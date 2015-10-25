@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
  */
 public class pictureChooser extends javax.swing.JFrame {
 private  SenderController controller = SenderController.getController() ;
+private static pictureChooser pictureChooser;
     /**
      * Creates new form pictureChooser
      */
@@ -22,11 +23,20 @@ private  SenderController controller = SenderController.getController() ;
         int returnResult = jFileChooser1.showOpenDialog(this);
         if (returnResult == JFileChooser.APPROVE_OPTION){
             controller.setPicture(jFileChooser1.getSelectedFile());
+            System.out.println(jFileChooser1.getSelectedFile().toString());
             controller.addImageTag();
+            controller.closePictureChooser();
         }else{
-         dispose();
+         //controller.closePictureChooser();
+           closePictureChooser();
+            //close();
         }
     }
+private void closePictureChooser(){
+   
+controller.closePictureChooser();
+    };
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,9 +95,14 @@ private  SenderController controller = SenderController.getController() ;
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new pictureChooser().setVisible(true);
-            }
+                 pictureChooser = new pictureChooser();
+                 pictureChooser.setVisible(true);
+                 
+           }
+           
+            
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

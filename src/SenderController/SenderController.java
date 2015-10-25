@@ -63,8 +63,15 @@ public String getPicture(){
 }
 public void createPictureChooser(){
     pictureChooser = new pictureChooser();
-    pictureCh
+    pictureChooser.setVisible(true);
 }
+public void closePictureChooser(){
+    java.awt.EventQueue.invokeLater(new Runnable(){
+        public void run(){
+            pictureChooser.dispose();
+        }
+    });
+  }
 public void addImageTag(){
     view.addPictureText();
 }

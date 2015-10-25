@@ -7,17 +7,26 @@ package SenderView;
 import SenderController.*;
 import javax.swing.JFileChooser;
 import javax.swing.SwingUtilities;
+import java.io.File;
+import java.io.IOException;
 /**
  *
  * @author igorbashka
  */
 public class chooseFile extends javax.swing.JFrame {
     private SenderController cont = SenderController.getController();
+    private int returnVal;
     /**
      * Creates new form chooseFile
      */
     public chooseFile() {
-        initComponents();
+//OpenActionPerformed();
+        jFileChooser1 = new javax.swing.JFileChooser();
+
+//initComponents();
+        //this.returnVal = jFileChooser1.showOpenDialog(this);
+        //initComponents();
+        //pack();
     }
 
     /**
@@ -32,12 +41,6 @@ public class chooseFile extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jFileChooser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFileChooser1ActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -55,17 +58,16 @@ public class chooseFile extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
-      if(JFileChooser.CANCEL_OPTION == 0){
-          setVisible(false);
-      }else{
-        cont.setPathToCustomers(jFileChooser1.getSelectedFile().toString());
-        setVisible(false);
-      }
-        
-    }//GEN-LAST:event_jFileChooser1ActionPerformed
-
-    /**
+private void OpenActionPerformed(java.awt.event.ActionEvent evt) {
+    int returnVal = jFileChooser1.showOpenDialog(this);
+    if (returnVal == JFileChooser.APPROVE_OPTION) {
+        File file = jFileChooser1.getSelectedFile();
+        System.out.println(file.toString() +"work yo");
+    } else {
+        System.out.println("File access cancelled by user.");
+    }
+    pack();
+}     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {

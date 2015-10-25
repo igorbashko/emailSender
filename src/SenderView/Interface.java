@@ -228,7 +228,11 @@ public class Interface extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-       new chooseFile().setVisible(true);
+        SwingUtilities.invokeLater(new Runnable(){
+       public void run(){
+new chooseFile().setVisible(true);
+       }
+        });
        //controller.readEmailList();   
     }//GEN-LAST:event_jButton1ActionPerformed
     
@@ -237,7 +241,13 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new SettingsWindow().setVisible(true);
+      
+      (new Thread(){
+           public void run(){
+         
+               new SettingsWindow().setVisible(true);
+           }
+       }).start();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -255,7 +265,8 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new pictureChooser().setVisible(true);
+       // new pictureChooser().setVisible(true);
+        controller.createPictureChooser();
     }//GEN-LAST:event_jButton4ActionPerformed
     public javax.swing.JButton ButtonClicked(){
       return jButton2;    
