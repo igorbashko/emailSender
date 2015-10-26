@@ -15,18 +15,19 @@ import java.io.IOException;
  */
 public class chooseFile extends javax.swing.JFrame {
     private SenderController cont = SenderController.getController();
-    private int returnVal;
+    private static chooseFile chooseFile;
     /**
      * Creates new form chooseFile
      */
     public chooseFile() {
-//OpenActionPerformed();
         jFileChooser1 = new javax.swing.JFileChooser();
-
-//initComponents();
-        //this.returnVal = jFileChooser1.showOpenDialog(this);
-        //initComponents();
-        //pack();
+        int returnVal = jFileChooser1.showOpenDialog(this);
+        if(returnVal == JFileChooser.APPROVE_OPTION){
+            File file = jFileChooser1.getSelectedFile();
+            cont.setPathToCustomers(file.toString());
+        }else{
+            cont.closeFileChooser();
+        }
     }
 
     /**
@@ -97,7 +98,8 @@ private void OpenActionPerformed(java.awt.event.ActionEvent evt) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new chooseFile().setVisible(true);
+               chooseFile = new chooseFile();
+               chooseFile.setVisible(true);
             }
         });
     }

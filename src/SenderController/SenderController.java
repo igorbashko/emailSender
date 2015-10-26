@@ -28,6 +28,7 @@ public class SenderController {
     private static SenderController controller = null;
     private boolean sentOrNot;
     private pictureChooser pictureChooser;
+    private chooseFile chooseFile;
     
     private SenderController(){};
 
@@ -52,6 +53,17 @@ public class SenderController {
     
     public String getPathToCustomers(){
         return pathToCustomers;
+    }
+    public void openFileChooser(){
+        chooseFile = new chooseFile();
+        chooseFile.setVisible(false);
+    }
+    public void closeFileChooser(){
+        java.awt.EventQueue.invokeLater(new Runnable(){
+            public void run(){
+                chooseFile.dispose();
+            }
+        });
     }
 public void setPicture(File picture){
     this.picture = picture;
