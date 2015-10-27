@@ -79,7 +79,7 @@ public class Interface extends javax.swing.JFrame {
         label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label1.setText("Добро пожаловать в программу автоматической рассылки электронной почты");
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.LEFT);
 
         label2.setText("Тема письма");
 
